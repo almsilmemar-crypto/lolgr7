@@ -1,22 +1,21 @@
-# Roblox Emergency Hamburg
+if saved and saved.lasttimewassaved == true then
+		if saved["Sniper"] then
+			for k, v in pairs(saved["Sniper"]) do currentSettings["Sniper"][k] = v end
+		end
+		if saved["G36"] then
+			for k, v in pairs(saved["G36"]) do currentSettings["G36"][k] = v end
+		end
 
-لعبة Roblox مع خريطة Emergency Hamburg ونظام Sniper متقدم.
+		applyWeaponSettings(currentSettings)
 
-## المميزات:
-- 🗺️ خريطة Emergency Hamburg كاملة
-- 🔫 نظام Sniper قوي
-- 👥 نظام لاعبين متعدد
-- 💥 نظام إطلاق نار واقعي
-
-## كيفية التثبيت:
-1. افتح Roblox Studio
-2. انسخ الأكواد من مجلد `src`
-3. ألصقها في لعبتك
-
-## الملفات:
-- `src/player_scripts.lua` - أكواد اللاعب
-- `src/sniper_system.lua` - نظام القنص
-- `src/map_loader.lua` - تحميل الخريطة
-
----
-تم الإنشاء بواسطة GitHub Copilot ✨
+		local isMobile = UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled
+		if isMobile then
+			showNotification("تم تشغيل الاعدادات الماضية. اذا كنت تريد تغييرها اضغط ضغطة مطولة على الشاشة لمدة 5 ثواني.")
+		else
+			showNotification("تم تشغيل الاعدادات الماضية. اذا كنت تريد تغييرها اضغط زر B.")
+		end
+	else
+		task.wait(0.5)
+		buildUI()
+	end
+end
